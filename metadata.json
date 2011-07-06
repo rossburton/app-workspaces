@@ -1,0 +1,7 @@
+{
+    "shell-version": ["3.0.2"],
+    "uuid": "app-workspaces@ross.burton.intel.com",
+    "name": "App Workspaces",
+    "description": "Start applications on their own workspaces",
+    "url": "https://github.com/rossburton/app-workspaces"
+}

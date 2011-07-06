@@ -1,0 +1,20 @@
+Application Workspaces for GNOME Shell
+===
+
+An extension that causes new application windows to be placed in an empty
+workspace.  This is designed for netbook devices where the screen is physically
+small and input devices are bad, so window management is best avoided.
+
+This is very much proof of concept, notable problems being with the Empathy
+roster and chat windows.
+
+To install it for all users:
+
+  sudo make install.
+
+To install it for the current user:
+
+  make install-local
+
+To activate the extension you'll need to reload the shell, this is done by activating the
+Run dialog (Alt-F2 by default) and entering "restart".
