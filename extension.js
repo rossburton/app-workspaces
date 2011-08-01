@@ -36,9 +36,32 @@ AppWorkspaces.prototype = {
         this.display.connect_after("window-created", Lang.bind(this, this._window_created));
     },
 
+    /* An array of window class/title pairs (WM_CLASS values) for windows that
+     * we don't mess with. */
+    blacklist: [
+        /* _wm_class_instance, _wm_class */
+        ["empathy-chat", "Empathy"],
+        ["empathy", "Empathy"]
+    ],
+
+    /*
+     * Determine if the window is blacklisted.
+     */
+    is_blacklisted: function(window) {
+        for (var i = 0; i < this.blacklist.length; i++) {
+            let rule = this.blacklist[i];
+            if (rule[0] == window.get_wm_class_instance() &&
+                rule[1] == window.get_wm_class()) {
+                return true;
+            }
+        }
+        return false;
+    },
+
     _window_created: function(display, window) {
         if (window.get_window_type() == Meta.WindowType.NORMAL &&
-            window.is_modal() == false) {
+            window.is_modal() == false &&
+            this.is_blacklisted(window) == false) {
             let timestamp = global.get_current_time();
             let active_workspace = this.screen.get_active_workspace();
             
