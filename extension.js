@@ -37,11 +37,13 @@ AppWorkspaces.prototype = {
     },
 
     /* An array of window class/title pairs (WM_CLASS values) for windows that
-     * we don't mess with. */
+     * we don't mess with. Copy this from the xprop output. */
     blacklist: [
-        /* _wm_class_instance, _wm_class */
+        /* Empathy */
         ["empathy-chat", "Empathy"],
-        ["empathy", "Empathy"]
+        ["empathy", "Empathy"],
+        /* Nautilus file operations dialog */
+        ["file_progress", "Nautilus"]
     ],
 
     /*
