@@ -21,6 +21,8 @@ install: all
 	mkdir --parents ${DESTDIR}/usr/share/gnome-shell/extensions/${UUID}
 	cp extension.js metadata.json ${DESTDIR}/usr/share/gnome-shell/extensions/${UUID}
 
+tag:
+	git tag -a -m "${VERSION}" ${VERSION}
 
 dist: all
-	git archive --format=tar --prefix=${NAME}-$(shell git describe)/ HEAD | gzip > ${NAME}-$(shell git describe).tar.gz
+	git archive --format=tar --prefix=${NAME}-${VERSION}/ HEAD | gzip > ${NAME}-${VERSION}.tar.gz
